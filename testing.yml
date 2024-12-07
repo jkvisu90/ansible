@@ -1,1 +1,12 @@
-
+---
+- name: Create a User
+  hosts: all
+  become: yes  # Use sudo privileges if required
+  tasks:
+    - name: Add user
+      ansible.builtin.user:
+        name: newuser  # Replace with the desired username
+        state: present  # Ensures the user is created
+        shell: /bin/bash  # Optional: specify the user's shell
+        home: /home/newuser  # Optional: specify the user's home directory
+        create_home: yes  # Optional: create home directory for the user
